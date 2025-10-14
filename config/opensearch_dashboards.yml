@@ -396,22 +396,32 @@
 # ===========================================
 
 # Set the value of this setting to true to enable multiple data source feature.
-# data_source.enabled: true
+# data_source.enabled: false
 
 # Set the value to true to enable workspace feature
 # Please note, workspace will not work with multi-tenancy. To enable workspace feature, you need to disable multi-tenancy first with `opensearch_security.multitenancy.enabled: false`
-# workspace.enabled: true
+# workspace.enabled: false
 
-# explore.enabled: true
+# explore.enabled: false
 
-# @experimental Set the value to true to enable discover traces
-# explore.discoverTraces.enabled: true
+# Enable Chat Plugin
+# chat.enabled: true
 
-# @experimental Set the enabled value to true and provide an AG-UI agent to enable chat
-# chat:
-  # enabled: true
-  # agUiUrl: "http://your-ai-agent-url:port"
+workspace.enabled: true
+explore.enabled: true
+data_source.enabled: true
+contextProvider.enabled: true
+chat.enabled: true
+chat.agUiUrl: http://localhost:9200/_plugins/_ml/agents/mGU84pkBn3ep9q8vzyfr/_execute/stream
 
-# @experimental Set the value to true to enable context provider
-# contextProvider:
-#   enabled: true
+
+# curl -X POST "http://localhost:5601/api/workspaces" \
+#   -H "Content-Type: application/json" \
+#   -H "osd-xsrf: true" \
+#   -d '{
+#     "attributes": {
+#       "name": "Test Observability Workspace",
+#       "description": "A test workspace for observability use case with monitoring, logging, and APM features",
+#       "features": ["use-case-observability"]
+#     }
+#   }'
